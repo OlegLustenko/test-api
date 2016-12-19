@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>TEST API</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 
   <dl>
     <dt>NAMESPACE*</dt>
-    <dd>Выбранное вами имя, к которому будут привязаны все данные. Например, <code>iliakan</code> или <code>vasyapetrov</code>. Обязательно.</dd>
+    <dd>Выбранное вами имя, к которому будут привязаны все данные. Например, <code>ollu</code> или <code>vasyapetrov</code>. Обязательно.</dd>
     <dt>MODEL</dt>
     <dd>Тип объектов, с которыми хотите работать, во множественном числе: letters, mailboxes, tasks, users. Может отсутствовать.</dd>
     <dt>ID</dt>
@@ -26,15 +26,15 @@
   <h2>Все запросы (кратко)</h2>
 
   <ul>
-    <li>GET /iliakan – вернуть всю базу</li>
-    <li>DELETE /iliakan – удалить всю базу</li>
-    <li>POST /iliakan – добавить много разных объектов одним запросом</li>
-    <li>GET /iliakan/users – вернуть всех пользователей</li>
-    <li>DELETE /iliakan/users – удалить всех пользователей</li>
-    <li>POST /iliakan/users – добавить одного пользователя</li>
-    <li>GET /iliakan/users/:id – вернуть пользователя с данным _id</li>
-    <li>DELETE /iliakan/users/:id – удалить пользователя с данным _id</li>
-    <li>PATCH /iliakan/users/:id – обновить пользователя с данным _id</li>
+    <li>GET /ollu – вернуть всю базу</li>
+    <li>DELETE /ollu – удалить всю базу</li>
+    <li>POST /ollu – добавить много разных объектов одним запросом</li>
+    <li>GET /ollu/users – вернуть всех пользователей</li>
+    <li>DELETE /ollu/users – удалить всех пользователей</li>
+    <li>POST /ollu/users – добавить одного пользователя</li>
+    <li>GET /ollu/users/:id – вернуть пользователя с данным _id</li>
+    <li>DELETE /ollu/users/:id – удалить пользователя с данным _id</li>
+    <li>PATCH /ollu/users/:id – обновить пользователя с данным _id</li>
   </ul>
 
   <h2>Все запросы (развёрнуто)</h2>
@@ -44,7 +44,7 @@
   Эти несколько методов служат для удобства загрузки и просмотра всех данных. Их не следует использовать в приложении.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
     <dd>Возвращает все объекты из базы, пример:
 
       <pre>
@@ -57,9 +57,9 @@
     }
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
     <dd>Удалить все объекты из базы.</dd>
-    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
     <dd>Добавляет объекты в базу, пример тела запроса:
       <pre>
     {
@@ -80,7 +80,7 @@
   Эти методы позволяют получить/удалить все объекты нужного типа, например, всех пользователей, а также вставить сразу много объектов данного типа.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
     <dd>Возвращает все объекты данного типа, пример:
 
       <pre>
@@ -90,9 +90,9 @@
     ]
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
     <dd>Удалить все объекты данного типа из базы.</dd>
-    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
     <dd>Добавляет объекты в базу, пример тела запроса:
       <pre>
     [
@@ -118,16 +118,16 @@
   В этих запросах в конце URL нужно указывать <code>_id</code> объекта, с которым идёт работа, в примерах ниже это <code>abcdef</code>.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
     <dd>Возвращает объект с данным <code>_id</code> или 404, если его нет, пример:
 
       <pre>
     { _id: ..., fullName: ... },
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
     <dd>Удалить данный объект из базы, возвращает 404, если его нет.</dd>
-    <dt>PATCH <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dt>PATCH <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
     <dd>Обновить свойства данного объекта, пример тела запроса:
       <pre>
     { fullName: ..., email: ... },
@@ -181,16 +181,16 @@
     <li>Лимиты: не более 100 экземпляров одной модели на NAMESPACE, а также не более 100000 всего.</li>
   </ul>
 
-  <p>Исходный код: <a href="https://github.com/iliakan/test-api">https://github.com/iliakan/test-api</a>.</p>
+  <p>Исходный код: <a href="https://github.com/OlegLustenko/test-api">https://github.com/OlegLustenko/test-api</a>.</p>
 
-  <p>Описания моделей см. <a href="https://github.com/iliakan/test-api/tree/master/models">https://github.com/iliakan/test-api/tree/master/models</a>.</p>
+  <p>Описания моделей см. <a href="https://github.com/OlegLustenko/test-api/tree/master/models">https://github.com/OlegLustenko/test-api/tree/master/models</a>.</p>
 
   <h2>Дополнительно</h2>
 
   Параметр <code>delay</code> позволяет добавлять искусственную задержку к ответу, может быть использован для тестирования "индикатора загрузки". Задержка указывается в миллисекундах. Он может быть добавлен к любом запросу, например:
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users?delay=2000">http://easycode-js.herokuapp.com/v1/iliakan/users?delay=2000</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users?delay=2000">http://easycode-js.herokuapp.com/v1/ollu/users?delay=2000</a></dt>
     <dd>Вернёт всех пользователей через 2 секунды</dd>
   </dl>
 
