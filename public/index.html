@@ -12,7 +12,7 @@
 
   <h2>Схема запросов</h2>
 
-  <p>Схема запросов: http://easycode-js.herokuapp.com/v1/NAMESPACE/MODEL/ID</p>
+  <p>Схема запросов: http://easycode-js.herokuapp.com/NAMESPACE/MODEL/ID</p>
 
   <dl>
     <dt>NAMESPACE*</dt>
@@ -44,7 +44,7 @@
   Эти несколько методов служат для удобства загрузки и просмотра всех данных. Их не следует использовать в приложении.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/ollu">http://easycode-js.herokuapp.com/ollu</a></dt>
     <dd>Возвращает все объекты из базы, пример:
 
       <pre>
@@ -57,9 +57,9 @@
     }
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/ollu">http://easycode-js.herokuapp.com/ollu</a></dt>
     <dd>Удалить все объекты из базы.</dd>
-    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/ollu">http://easycode-js.herokuapp.com/v1/ollu</a></dt>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/ollu">http://easycode-js.herokuapp.com/ollu</a></dt>
     <dd>Добавляет объекты в базу, пример тела запроса:
       <pre>
     {
@@ -80,7 +80,7 @@
   Эти методы позволяют получить/удалить все объекты нужного типа, например, всех пользователей, а также вставить сразу много объектов данного типа.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/ollu/users">http://easycode-js.herokuapp.com/ollu/users</a></dt>
     <dd>Возвращает все объекты данного типа, пример:
 
       <pre>
@@ -90,9 +90,9 @@
     ]
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/ollu/users">http://easycode-js.herokuapp.com/ollu/users</a></dt>
     <dd>Удалить все объекты данного типа из базы.</dd>
-    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/ollu/users">http://easycode-js.herokuapp.com/v1/ollu/users</a></dt>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/ollu/users">http://easycode-js.herokuapp.com/ollu/users</a></dt>
     <dd>Добавляет объекты в базу, пример тела запроса:
       <pre>
     [
@@ -118,16 +118,16 @@
   В этих запросах в конце URL нужно указывать <code>_id</code> объекта, с которым идёт работа, в примерах ниже это <code>abcdef</code>.
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/ollu/users/abcdef">http://easycode-js.herokuapp.com/ollu/users/abcdef</a></dt>
     <dd>Возвращает объект с данным <code>_id</code> или 404, если его нет, пример:
 
       <pre>
     { _id: ..., fullName: ... },
   </pre>
     </dd>
-    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/ollu/users/abcdef">http://easycode-js.herokuapp.com/ollu/users/abcdef</a></dt>
     <dd>Удалить данный объект из базы, возвращает 404, если его нет.</dd>
-    <dt>PATCH <a href="http://easycode-js.herokuapp.com/v1/ollu/users/abcdef">http://easycode-js.herokuapp.com/v1/ollu/users/abcdef</a></dt>
+    <dt>PATCH <a href="http://easycode-js.herokuapp.com/ollu/users/abcdef">http://easycode-js.herokuapp.com/ollu/users/abcdef</a></dt>
     <dd>Обновить свойства данного объекта, пример тела запроса:
       <pre>
     { fullName: ..., email: ... },
@@ -190,7 +190,7 @@
   Параметр <code>delay</code> позволяет добавлять искусственную задержку к ответу, может быть использован для тестирования "индикатора загрузки". Задержка указывается в миллисекундах. Он может быть добавлен к любом запросу, например:
 
   <dl>
-    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/ollu/users?delay=2000">http://easycode-js.herokuapp.com/v1/ollu/users?delay=2000</a></dt>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/ollu/users?delay=2000">http://easycode-js.herokuapp.com/ollu/users?delay=2000</a></dt>
     <dd>Вернёт всех пользователей через 2 секунды</dd>
   </dl>
 
