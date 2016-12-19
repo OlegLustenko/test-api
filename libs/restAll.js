@@ -15,15 +15,15 @@ module.exports = function() {
   }
 
   return new Router({
-    prefix: '/:namespace'
-  })
+      prefix: '/:namespace'
+    })
     // DELETE / => del all
     .del('/', function*() {
 
-      for(let modelName in mongoose.models) {
+      for (let modelName in mongoose.models) {
         let Model = mongoose.models[modelName];
         if (!Model.restEnabled) continue;
-        yield Model.remove({namespace: this.params.namespace});
+        yield Model.remove({ namespace: this.params.namespace });
       }
 
       this.body = 'ok';
@@ -31,7 +31,7 @@ module.exports = function() {
     // POST /  {users: [ ... ]} => create all
     .post('/', function*() {
       let response = {};
-      for(let postModelName in this.request.body) {
+      for (let postModelName in this.request.body) {
         let Model = modelByCollectionName(postModelName);
         if (!Model) {
           this.throw(400, "No such model: " + postModelName);
@@ -47,11 +47,11 @@ module.exports = function() {
         }
 
         let totalCount = yield Model.count();
-        if (totalCount +  modelsData.length >= config.rest.allLimit) {
+        if (totalCount + modelsData.length >= config.rest.allLimit) {
           this.throw(429, `Can't create: Overall limit ${config.rest.allLimit} will be exceeded`);
         }
 
-        let count = yield Model.count({namespace: this.params.namespace});
+        let count = yield Model.count({ namespace: this.params.namespace });
         if (count + modelsData.length >= config.rest.limit) {
           this.throw(429, `Can't create: limit ${config.rest.limit} for ${Model.collection.name} will be exceeded`);
         }
@@ -71,11 +71,11 @@ module.exports = function() {
     // GET / => get all
     .get('/', function*() {
       let response = {};
-
-      for(let modelName in mongoose.models) {
+      console.log(this.params.namespace);
+      for (let modelName in mongoose.models) {
         let Model = mongoose.models[modelName];
         if (!Model.restEnabled) continue;
-        let models = yield Model.find({namespace: this.params.namespace});
+        let models = yield Model.find({ namespace: this.params.namespace });
         models = models.map(Model.restFormat);
 
         response[Model.collection.name] = models;
@@ -84,6 +84,6 @@ module.exports = function() {
       this.body = response;
     })
 
-    .routes();
+  .routes();
 
 };

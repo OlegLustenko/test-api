@@ -1,4 +1,3 @@
-
 if (process.env.DEV_TRACE) {
   Error.stackTraceLimit = Infinity;
   require('trace');
@@ -8,13 +7,13 @@ if (process.env.DEV_TRACE) {
 
 module.exports = {
   mongoose: {
-    uri:     "mongodb://localhost/ng2",
+    uri: "mongodb://sa:1q2w@ds052629.mlab.com:52629/js",
     options: {
       server: {
         socketOptions: {
           keepAlive: 1
         },
-        poolSize:      5
+        poolSize: 5
       }
     }
   },
@@ -22,8 +21,8 @@ module.exports = {
     limit: 100,
     totalLimit: 100000
   },
-  host:     '0.0.0.0',
-  port:     3000,
-  secret:   'mysecret',
-  root:     process.cwd()
+  host: '0.0.0.0',
+  port: process.env.PORT || 3000,
+  secret: 'mysecret',
+  root: process.cwd()
 };
