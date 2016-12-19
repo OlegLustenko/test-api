@@ -1,51 +1,53 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title></title>
 </head>
+
 <body>
 
-Сервис для работы с тестовыми данными API. Позволяет создавать и удалять объекты на сервере.
+  Сервис для работы с тестовыми данными API. Позволяет создавать и удалять объекты на сервере.
 
-<h2>Схема запросов</h2>
+  <h2>Схема запросов</h2>
 
-<p>Схема запросов: http://test-api.javascript.ru/v1/NAMESPACE/MODEL/ID</p>
+  <p>Схема запросов: http://easycode-js.herokuapp.com/v1/NAMESPACE/MODEL/ID</p>
 
-<dl>
-  <dt>NAMESPACE*</dt>
-  <dd>Выбранное вами имя, к которому будут привязаны все данные. Например, <code>iliakan</code> или <code>vasyapetrov</code>. Обязательно.</dd>
-  <dt>MODEL</dt>
-  <dd>Тип объектов, с которыми хотите работать, во множественном числе: letters, mailboxes, tasks, users. Может отсутствовать.</dd>
-  <dt>ID</dt>
-  <dd>Идентификатор конкретного объекта, если нужен.</dd>
-</dl>
+  <dl>
+    <dt>NAMESPACE*</dt>
+    <dd>Выбранное вами имя, к которому будут привязаны все данные. Например, <code>iliakan</code> или <code>vasyapetrov</code>. Обязательно.</dd>
+    <dt>MODEL</dt>
+    <dd>Тип объектов, с которыми хотите работать, во множественном числе: letters, mailboxes, tasks, users. Может отсутствовать.</dd>
+    <dt>ID</dt>
+    <dd>Идентификатор конкретного объекта, если нужен.</dd>
+  </dl>
 
-<h2>Все запросы (кратко)</h2>
+  <h2>Все запросы (кратко)</h2>
 
-<ul>
-  <li>GET /iliakan – вернуть всю базу</li>
-  <li>DELETE /iliakan – удалить всю базу</li>
-  <li>POST /iliakan – добавить много разных объектов одним запросом</li>
-  <li>GET /iliakan/users – вернуть всех пользователей</li>
-  <li>DELETE /iliakan/users – удалить всех пользователей</li>
-  <li>POST /iliakan/users – добавить одного пользователя</li>
-  <li>GET /iliakan/users/:id – вернуть пользователя с данным _id</li>
-  <li>DELETE /iliakan/users/:id – удалить пользователя с данным _id</li>
-  <li>PATCH /iliakan/users/:id – обновить пользователя с данным _id</li>
-</ul>
+  <ul>
+    <li>GET /iliakan – вернуть всю базу</li>
+    <li>DELETE /iliakan – удалить всю базу</li>
+    <li>POST /iliakan – добавить много разных объектов одним запросом</li>
+    <li>GET /iliakan/users – вернуть всех пользователей</li>
+    <li>DELETE /iliakan/users – удалить всех пользователей</li>
+    <li>POST /iliakan/users – добавить одного пользователя</li>
+    <li>GET /iliakan/users/:id – вернуть пользователя с данным _id</li>
+    <li>DELETE /iliakan/users/:id – удалить пользователя с данным _id</li>
+    <li>PATCH /iliakan/users/:id – обновить пользователя с данным _id</li>
+  </ul>
 
-<h2>Все запросы (развёрнуто)</h2>
+  <h2>Все запросы (развёрнуто)</h2>
 
-<h3>По всей базе</h3>
+  <h3>По всей базе</h3>
 
-Эти несколько методов служат для удобства загрузки и просмотра всех данных. Их не следует использовать в приложении.
+  Эти несколько методов служат для удобства загрузки и просмотра всех данных. Их не следует использовать в приложении.
 
-<dl>
-  <dt>GET <a href="http://test-api.javascript.ru/v1/iliakan">http://test-api.javascript.ru/v1/iliakan</a></dt>
-  <dd>Возвращает все объекты из базы, пример:
+  <dl>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dd>Возвращает все объекты из базы, пример:
 
-  <pre>
+      <pre>
     {
       users: [
         { _id: ..., fullName: ... },
@@ -54,12 +56,12 @@
       tasks: [ ... ]
     }
   </pre>
-  </dd>
-  <dt>DELETE <a href="http://test-api.javascript.ru/v1/iliakan">http://test-api.javascript.ru/v1/iliakan</a></dt>
-  <dd>Удалить все объекты из базы.</dd>
-  <dt>POST <a href="http://test-api.javascript.ru/v1/iliakan">http://test-api.javascript.ru/v1/iliakan</a></dt>
-  <dd>Добавляет объекты в базу, пример тела запроса:
-  <pre>
+    </dd>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dd>Удалить все объекты из базы.</dd>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/iliakan">http://easycode-js.herokuapp.com/v1/iliakan</a></dt>
+    <dd>Добавляет объекты в базу, пример тела запроса:
+      <pre>
     {
       users: [
         { fullName: ..., email: ... },
@@ -67,138 +69,134 @@
       ],
       tasks: [ ... ]
     }
-  </pre>
-    Возвращает добавленные объекты (с <code>_id</code>). При ошибке валидации в любом из объектов возвращает объект с единственным свойством errors и прекращает вставку.
-  </dd>
+  </pre> Возвращает добавленные объекты (с <code>_id</code>). При ошибке валидации в любом из объектов возвращает объект с единственным свойством errors и прекращает вставку.
+    </dd>
 
-</dl>
+  </dl>
 
 
-<h3>По конкретному типу объектов</h3>
+  <h3>По конкретному типу объектов</h3>
 
-Эти методы позволяют получить/удалить все объекты нужного типа, например, всех пользователей, а также вставить сразу много объектов данного типа.
+  Эти методы позволяют получить/удалить все объекты нужного типа, например, всех пользователей, а также вставить сразу много объектов данного типа.
 
-<dl>
-  <dt>GET <a href="http://test-api.javascript.ru/v1/iliakan/users">http://test-api.javascript.ru/v1/iliakan/users</a></dt>
-  <dd>Возвращает все объекты данного типа, пример:
+  <dl>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dd>Возвращает все объекты данного типа, пример:
 
-  <pre>
+      <pre>
     [
       { _id: ..., fullName: ... },
       { _id: ..., fullName: ... }
     ]
   </pre>
-  </dd>
-  <dt>DELETE <a href="http://test-api.javascript.ru/v1/iliakan/users">http://test-api.javascript.ru/v1/iliakan/users</a></dt>
-  <dd>Удалить все объекты данного типа из базы.</dd>
-  <dt>POST <a href="http://test-api.javascript.ru/v1/iliakan/users">http://test-api.javascript.ru/v1/iliakan/users</a></dt>
-  <dd>Добавляет объекты в базу, пример тела запроса:
-  <pre>
+    </dd>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dd>Удалить все объекты данного типа из базы.</dd>
+    <dt>POST <a href="http://easycode-js.herokuapp.com/v1/iliakan/users">http://easycode-js.herokuapp.com/v1/iliakan/users</a></dt>
+    <dd>Добавляет объекты в базу, пример тела запроса:
+      <pre>
     [
       { fullName: ..., email: ... },
       { fullName: ..., email: ... }
     ]
-  </pre>
-    Возвращает массив добавленных объектов (с <code>_id</code>). При ошибке валидации возвращает объект с единственным свойством errors, например:
-    <pre>
+  </pre> Возвращает массив добавленных объектов (с <code>_id</code>). При ошибке валидации возвращает объект с единственным свойством errors, например:
+      <pre>
       {
         errors: {
           email: "Email must be valid"
         }
       }
     </pre>
-  </dd>
+    </dd>
 
 
-</dl>
+  </dl>
 
 
-<h3>По конкретному (одному) объекту</h3>
+  <h3>По конкретному (одному) объекту</h3>
 
-В этих запросах в конце URL нужно указывать <code>_id</code> объекта, с которым идёт работа, в примерах ниже это <code>abcdef</code>.
+  В этих запросах в конце URL нужно указывать <code>_id</code> объекта, с которым идёт работа, в примерах ниже это <code>abcdef</code>.
 
-<dl>
-  <dt>GET <a href="http://test-api.javascript.ru/v1/iliakan/users/abcdef">http://test-api.javascript.ru/v1/iliakan/users/abcdef</a></dt>
-  <dd>Возвращает объект с данным <code>_id</code> или 404, если его нет, пример:
+  <dl>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dd>Возвращает объект с данным <code>_id</code> или 404, если его нет, пример:
 
-  <pre>
+      <pre>
     { _id: ..., fullName: ... },
   </pre>
-  </dd>
-  <dt>DELETE <a href="http://test-api.javascript.ru/v1/iliakan/users/abcdef">http://test-api.javascript.ru/v1/iliakan/users/abcdef</a></dt>
-  <dd>Удалить данный объект из базы, возвращает 404, если его нет.</dd>
-  <dt>PATCH <a href="http://test-api.javascript.ru/v1/iliakan/users/abcdef">http://test-api.javascript.ru/v1/iliakan/users/abcdef</a></dt>
-  <dd>Обновить свойства данного объекта, пример тела запроса:
-  <pre>
+    </dd>
+    <dt>DELETE <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dd>Удалить данный объект из базы, возвращает 404, если его нет.</dd>
+    <dt>PATCH <a href="http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef">http://easycode-js.herokuapp.com/v1/iliakan/users/abcdef</a></dt>
+    <dd>Обновить свойства данного объекта, пример тела запроса:
+      <pre>
     { fullName: ..., email: ... },
-  </pre>
-    Возвращает обновлённый объект. При ошибке валидации возвращает объект с единственным свойством errors.
-  </dd>
+  </pre> Возвращает обновлённый объект. При ошибке валидации возвращает объект с единственным свойством errors.
+    </dd>
 
-</dl>
+  </dl>
 
-<h2>Типы объектов</h2>
+  <h2>Типы объектов</h2>
 
-Небольшой справочник по типам объектов и их полям.
+  Небольшой справочник по типам объектов и их полям.
 
-<p>Пользователь <code>user</code></p>
+  <p>Пользователь <code>user</code></p>
 
-<ul>
-  <li><code>String fullName*</code> -- имя</li>
-  <li><code>String email*</code> -- email</li>
-  <li><code>String avatarUrl</code> -- URL аватара</li>
-  <li><code>Date birthdate</code> -- дата рождения</li>
-  <li><code>String gender</code> -- пол: "M" или "F"</li>
-  <li><code>String address</code> -- адрес</li>
-</ul>
-
-
-<p>Задача <code>task</code></p>
-
-<ul>
-  <li><code>String title*</code> -- название</li>
-  <li><code>Array[{class, title}] tags</code> -- теги, массив объектов вида <code>{String class, String title}</code> с классом и названием тега.</li>
-</ul>
-
-<p>Почтовый ящик <code>mailbox</code></p>
-
-<ul>
-  <li><code>String title*</code> -- название</li>
-</ul>
-
-<p>Письмо <code>letter</code></p>
-
-<ul>
-  <li><code>ObjectId mailbox*</code> -- ID почтового ящика mailbox</li>
-  <li><code>String subject*</code> -- Тема письма</li>
-  <li><code>String body*</code> -- Содержание письма</li>
-  <li><code>String to*</code> -- Кому</li>
-</ul>
-
-<h2>Ограничения</h2>
-
-<ul>
-  <li>Кросс-доменные: отсутствуют, любые запросы откуда угодно, сервер ставит CORS-заголовки.</li>
-  <li>Лимиты: не более 100 экземпляров одной модели на NAMESPACE, а также не более 100000 всего.</li>
-</ul>
-
-<p>Исходный код: <a href="https://github.com/iliakan/test-api">https://github.com/iliakan/test-api</a>.</p>
-
-<p>Описания моделей см. <a href="https://github.com/iliakan/test-api/tree/master/models">https://github.com/iliakan/test-api/tree/master/models</a>.</p>
-
-<h2>Дополнительно</h2>
-
-Параметр <code>delay</code> позволяет добавлять искусственную задержку к ответу, может быть использован для тестирования "индикатора загрузки". Задержка указывается в миллисекундах.
-
-Он может быть добавлен к любом запросу, например:
-
-<dl>
-  <dt>GET <a href="http://test-api.javascript.ru/v1/iliakan/users?delay=2000">http://test-api.javascript.ru/v1/iliakan/users?delay=2000</a></dt>
-  <dd>Вернёт всех пользователей через 2 секунды</dd>
-</dl>
+  <ul>
+    <li><code>String fullName*</code> -- имя</li>
+    <li><code>String email*</code> -- email</li>
+    <li><code>String avatarUrl</code> -- URL аватара</li>
+    <li><code>Date birthdate</code> -- дата рождения</li>
+    <li><code>String gender</code> -- пол: "M" или "F"</li>
+    <li><code>String address</code> -- адрес</li>
+  </ul>
 
 
-<p>Сервис находится в альфе!</p>
+  <p>Задача <code>task</code></p>
+
+  <ul>
+    <li><code>String title*</code> -- название</li>
+    <li><code>Array[{class, title}] tags</code> -- теги, массив объектов вида <code>{String class, String title}</code> с классом и названием тега.</li>
+  </ul>
+
+  <p>Почтовый ящик <code>mailbox</code></p>
+
+  <ul>
+    <li><code>String title*</code> -- название</li>
+  </ul>
+
+  <p>Письмо <code>letter</code></p>
+
+  <ul>
+    <li><code>ObjectId mailbox*</code> -- ID почтового ящика mailbox</li>
+    <li><code>String subject*</code> -- Тема письма</li>
+    <li><code>String body*</code> -- Содержание письма</li>
+    <li><code>String to*</code> -- Кому</li>
+  </ul>
+
+  <h2>Ограничения</h2>
+
+  <ul>
+    <li>Кросс-доменные: отсутствуют, любые запросы откуда угодно, сервер ставит CORS-заголовки.</li>
+    <li>Лимиты: не более 100 экземпляров одной модели на NAMESPACE, а также не более 100000 всего.</li>
+  </ul>
+
+  <p>Исходный код: <a href="https://github.com/iliakan/test-api">https://github.com/iliakan/test-api</a>.</p>
+
+  <p>Описания моделей см. <a href="https://github.com/iliakan/test-api/tree/master/models">https://github.com/iliakan/test-api/tree/master/models</a>.</p>
+
+  <h2>Дополнительно</h2>
+
+  Параметр <code>delay</code> позволяет добавлять искусственную задержку к ответу, может быть использован для тестирования "индикатора загрузки". Задержка указывается в миллисекундах. Он может быть добавлен к любом запросу, например:
+
+  <dl>
+    <dt>GET <a href="http://easycode-js.herokuapp.com/v1/iliakan/users?delay=2000">http://easycode-js.herokuapp.com/v1/iliakan/users?delay=2000</a></dt>
+    <dd>Вернёт всех пользователей через 2 секунды</dd>
+  </dl>
+
+
+  <p>Сервис находится в альфе!</p>
 
 </body>
+
 </html>
