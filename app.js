@@ -1,6 +1,6 @@
 'use strict';
 
-// http://test-api.javascript.ru/blabla/
+// https://easycode-js.herokuapp.com/blabla/
 
 const Application = require('./libs/application');
 const app = new Application();
