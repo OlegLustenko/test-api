@@ -28,8 +28,8 @@ const schema = new mongoose.Schema({
     type: Date
   },
   phone: {
-    type: Number,
-    default: 989898989
+    type: String,
+    default: '00000000'
   },
   gender: {
     type: String,
