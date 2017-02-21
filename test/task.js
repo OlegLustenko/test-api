@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const app = require('../app');
 const request = require('request-promise');
@@ -9,14 +9,10 @@ function getURL(path) {
   return `http://localhost:3000/test${path}`;
 }
 
-describe("Task CRUD", function() {
-
+describe('Task CRUD', function() {
   let newTaskData = {
-    title: "Title",
-    tags: [
-      {class: "class1", title: "one"},
-      {class: "class2", title: "two"}
-    ]
+    title: 'Title',
+    tags: [{ class: 'class1', title: 'one' }, { class: 'class2', title: 'two' }]
   };
 
   before(function() {
@@ -31,19 +27,17 @@ describe("Task CRUD", function() {
     yield Task.remove({});
   });
 
-  describe("POST /tasks", function() {
-    it("creates a task", function*() {
+  describe('POST /tasks', function() {
+    it('creates a task', function*() {
       let body = yield request.post({
-        url:    getURL('/tasks'),
-        json:   true,
-        body:   newTaskData
+        url: getURL('/tasks'),
+        json: true,
+        body: newTaskData
       });
 
       // exclude _id from the object
-      body = JSON.parse(JSON.stringify(body), (k, v) => (k == '_id') ? undefined : v);
+      body = JSON.parse(JSON.stringify(body), (k, v) => k == '_id' ? undefined : v);
       body.should.be.eql(newTaskData);
     });
-
   });
-
 });

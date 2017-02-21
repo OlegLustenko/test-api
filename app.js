@@ -25,11 +25,10 @@ const rest = require('./libs/rest');
 
 fs.readdirSync('./models').forEach(file => require(`./models/${file}`));
 
-for(let modelName in mongoose.models) {
+for (let modelName in mongoose.models) {
   app.use(rest(mongoose.models[modelName]));
 }
 
 app.use(require('./libs/restAll')());
-
 
 module.exports = app;

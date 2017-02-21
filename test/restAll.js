@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const app = require('../app');
 const request = require('request-promise');
@@ -16,41 +16,35 @@ function stripIds(obj) {
   return JSON.parse(JSON.stringify(obj), (k, v) => k == '_id' ? undefined : v);
 }
 
-describe("Rest All", function() {
-
+describe('Rest All', function() {
   let existingUserData = {
-    _id:       "573f1b79a5fe781a82f4394e",
-    fullName:  "John Bull",
-    avatarUrl: "http://avatar.com/john.jpg",
-    email:     "john@test.ru",
-    birthdate: new Date(2015, 1, 1).toJSON(),
-    gender:    'M',
-    address:   'address john'
+    _id: '573f1b79a5fe781a82f4394e',
+    fullName: 'John Bull',
+    avatarUrl: 'http://avatar.com/john.jpg',
+    created:'',
+    email: 'john@test.ru',
+    birthdate: new Date(2017, 1, 1).toJSON(),
+    gender: 'M',
+    address: 'address john'
   };
 
   let existingTaskData = {
-    title: "Existing task",
-    tags: [
-      {class: "class", title: "one"},
-    ]
+    title: 'Existing task',
+    tags: [{ class: 'class', title: 'one' }]
   };
 
   let newTaskData = {
-    title: "New task",
-    tags: [
-      {class: "class1", title: "one"},
-      {class: "class2", title: "two"}
-    ]
+    title: 'New task',
+    tags: [{ class: 'class1', title: 'one' }, { class: 'class2', title: 'two' }]
   };
 
-
   let newUserData = {
-    fullName:  "Alice Cooper",
-    avatarUrl: "http://avatar.com/alice.jpg",
-    email:     "alice@test.ru",
-    birthdate: new Date(2016, 1, 1).toJSON(),
-    gender:    'F',
-    address:   'address alice'
+    fullName: 'Alice Cooper',
+    avatarUrl: 'http://avatar.com/alice.jpg',
+    email: 'alice@test.ru',
+    birthdate: new Date(2017, 1, 1).toJSON(),
+    gender: 'F',
+    address: 'address alice'
   };
   let existingUser, existingTask;
 
@@ -65,19 +59,19 @@ describe("Rest All", function() {
   // load fixtures
   beforeEach(function*() {
     yield* createEmptyDb();
-    existingUser = yield User.create(Object.assign({namespace: 'test'}, existingUserData));
-    existingTask = yield Task.create(Object.assign({namespace: 'test'}, existingTaskData));
+    existingUser = yield User.create(Object.assign({ namespace: 'test' }, existingUserData));
+    existingTask = yield Task.create(Object.assign({ namespace: 'test' }, existingTaskData));
   });
 
-  describe("POST /", function() {
-    it("creates db users & tasks", function*() {
+  describe('POST /', function() {
+    it('creates db users & tasks', function*() {
       let body = {
         users: [newUserData],
         tasks: [newTaskData]
       };
 
       let response = yield request.post({
-        url:  getURL('/'),
+        url: getURL('/'),
         json: true,
         body
       });
@@ -86,13 +80,13 @@ describe("Rest All", function() {
       responseStripId.should.eql(body);
     });
 
-    it("returns a validation error in case of bad data", function*() {
+    it('returns a validation error in case of bad data', function*() {
       let response = yield request.post({
-        url:                     getURL('/'),
-        json:                    true,
+        url: getURL('/'),
+        json: true,
         resolveWithFullResponse: true,
-        simple:                  false,
-        body:                    {
+        simple: false,
+        body: {
           users: [{}] // let's try empty user
         }
       });
@@ -102,34 +96,30 @@ describe("Rest All", function() {
       response.body.errors.email.should.exist;
       response.body.errors.fullName.should.exist;
     });
-
   });
 
-  describe("DELETE /", function() {
-    it("clears all models", function*() {
+  describe('DELETE /', function() {
+    it('clears all models', function*() {
       let response = yield request.del({
-        url:  getURL('/'),
+        url: getURL('/'),
         json: true
       });
 
       (yield User.count()).should.eql(0);
       (yield Task.count()).should.eql(0);
     });
-
   });
 
-  describe("GET /", function() {
-    it("returns all models", function*() {
+  describe('GET /', function() {
+    it('returns all models', function*() {
       let response = yield request.get({
-        url:  getURL('/'),
+        url: getURL('/'),
         json: true
       });
 
       let responseStripId = stripIds(response);
       responseStripId.tasks.should.eql([stripIds(existingTaskData)]);
       responseStripId.users.should.eql([stripIds(existingUserData)]);
-
     });
   });
-
 });

@@ -5,7 +5,6 @@ const Router = require('koa-router');
 const config = require('config');
 
 module.exports = function(Model) {
-
   let modelName = Model.modelName; // "User"
 
   return new Router({
@@ -19,7 +18,7 @@ module.exports = function(Model) {
         this.throw(404);
       }
 
-      this[modelName] = yield Model.findOne({_id: id, namespace: this.params.namespace});
+      this[modelName] = yield Model.findOne({ _id: id, namespace: this.params.namespace });
 
       if (!this[modelName]) {
         this.throw(404);
@@ -29,13 +28,12 @@ module.exports = function(Model) {
     })
     // POST / => create
     .post('/', function*() {
-
       let totalCount = yield Model.count();
       if (totalCount >= config.rest.allLimit) {
         this.throw(429, `Can't create: Overall limit reached: ${totalCount} total exist`);
       }
 
-      let count = yield Model.count({namespace: this.params.namespace});
+      let count = yield Model.count({ namespace: this.params.namespace });
       if (count >= config.rest.limit) {
         this.throw(429, `Can't create: limit reached, ${count} ${Model.collection.name} exist`);
       }
@@ -46,12 +44,12 @@ module.exports = function(Model) {
     })
     // DELETE / => del all
     .del('/', function*() {
-      yield Model.remove({namespace: this.params.namespace});
+      yield Model.remove({ namespace: this.params.namespace });
       this.body = 'ok';
     })
     // GET / => get all
     .get('/', function*() {
-      let models = yield Model.find({namespace: this.params.namespace});
+      let models = yield Model.find({ namespace: this.params.namespace });
 
       this.body = models.map(Model.restFormat);
     })
@@ -70,5 +68,4 @@ module.exports = function(Model) {
       this.body = 'ok';
     })
     .routes();
-
 };

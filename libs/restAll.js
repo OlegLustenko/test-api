@@ -5,7 +5,6 @@ const Router = require('koa-router');
 const config = require('config');
 
 module.exports = function() {
-
   function modelByCollectionName(name) {
     for (let modelName in mongoose.models) {
       let Model = mongoose.models[modelName];
@@ -15,11 +14,10 @@ module.exports = function() {
   }
 
   return new Router({
-      prefix: '/:namespace'
-    })
+    prefix: '/:namespace'
+  })
     // DELETE / => del all
     .del('/', function*() {
-
       for (let modelName in mongoose.models) {
         let Model = mongoose.models[modelName];
         if (!Model.restEnabled) continue;
@@ -34,16 +32,16 @@ module.exports = function() {
       for (let postModelName in this.request.body) {
         let Model = modelByCollectionName(postModelName);
         if (!Model) {
-          this.throw(400, "No such model: " + postModelName);
+          this.throw(400, 'No such model: ' + postModelName);
         }
 
         if (!Model.restEnabled) {
-          this.throw(400, "No rest on model: " + postModelName);
+          this.throw(400, 'No rest on model: ' + postModelName);
         }
 
         let modelsData = this.request.body[postModelName];
         if (!Array.isArray(modelsData)) {
-          this.throw(400, "Not array: " + postModelName);
+          this.throw(400, 'Not array: ' + postModelName);
         }
 
         let totalCount = yield Model.count();
@@ -63,7 +61,6 @@ module.exports = function() {
           let model = yield* Model.restCreate(this.params.namespace, modelData);
           response[postModelName].push(Model.restFormat(model));
         }
-
       }
 
       this.body = response;
@@ -83,7 +80,5 @@ module.exports = function() {
 
       this.body = response;
     })
-
-  .routes();
-
+    .routes();
 };

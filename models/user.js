@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
 
   fullName: {
     type: String,
-    required: "Name must be present"
+    required: 'Name must be present'
   },
 
   avatarUrl: {
@@ -27,25 +27,33 @@ const schema = new mongoose.Schema({
   birthdate: {
     type: Date
   },
+  phone: {
+    type: Number,
+    default: 989898989
+  },
   gender: {
     type: String,
     enum: ['M', 'F']
   },
+
   address: String,
   email: {
     type: String,
     lowercase: true,
     trim: true,
-    required: "Email is required",
+    required: 'Email is required',
     validate: validate({
       validator: 'isEmail',
       passIfEmpty: true,
       message: 'Email must be valid'
     })
+  },
+  created: {
+    type: Date,
+    default: Date.now
   }
 });
 
 schema.plugin(require('../libs/restPlugin'));
 
 module.exports = mongoose.model('User', schema);
-

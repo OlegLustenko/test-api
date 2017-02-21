@@ -4,10 +4,9 @@ if (process.env.DEV_TRACE) {
   require('clarify');
 }
 
-
 module.exports = {
   mongoose: {
-    uri: "mongodb://sa:1q2w@ds052629.mlab.com:52629/js",
+    uri: 'mongodb://sa:1q2w@ds052629.mlab.com:52629/js',
     options: {
       server: {
         socketOptions: {

@@ -5,10 +5,9 @@ const Koa = require('koa');
 const config = require('config');
 const mongoose = require('../libs/mongoose');
 const http = require('http');
-const promisify = require("es6-promisify");
+const promisify = require('es6-promisify');
 
 module.exports = class Application extends Koa {
-
   start() {
     return Promise.all([
       mongoose.connect(config.mongoose.uri, config.mongoose.options),
@@ -26,5 +25,4 @@ module.exports = class Application extends Koa {
       })
     ]);
   }
-
 };
