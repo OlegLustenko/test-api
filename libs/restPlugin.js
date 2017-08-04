@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function(schema, options) {
-  options = options || {};
-
+module.exports = function(schema, options = {}) {
   schema.statics.restEnabled = true;
 
   // get fields for rest requests
@@ -25,7 +23,6 @@ module.exports = function(schema, options) {
   schema.statics.restCreate = options.restCreate ||
     function*(namespace, body) {
       let data = { namespace };
-
       let restKeys = this.getRestKeys();
 
       for (let key in body) {
@@ -47,6 +44,6 @@ module.exports = function(schema, options) {
         }
       }
 
-      yield model.save();
+      return yield model.save();
     };
 };
