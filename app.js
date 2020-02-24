@@ -23,10 +23,11 @@ middlewares.forEach(function(middleware) {
 
 const rest = require('./libs/rest');
 
-fs.readdirSync('./models').forEach(file => require(`./models/${file}`));
+fs.readdirSync('./models').forEach((file) => require(`./models/${file}`));
 
 for (let modelName in mongoose.models) {
-  app.use(rest(mongoose.models[modelName]));
+  const model = mongoose.models[modelName];
+  app.use(rest(model));
 }
 
 app.use(require('./libs/restAll')());
